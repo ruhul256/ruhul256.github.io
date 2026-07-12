@@ -612,6 +612,10 @@ p {
   transition: color 0.3s ease;
 }
 
+li {
+  text-align: justify;
+}
+
 p:last-child {
   margin-bottom: 0;
 }
@@ -1122,11 +1126,50 @@ footer::before {
     gap: 18px;
   }
 
+  /* Sidebar: avatar + info side-by-side on tablet */
   .sidebar {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 28px 20px;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    text-align: left;
+    padding: 22px 18px;
+    gap: 18px;
+  }
+
+  .avatar-container {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .sidebar > *:not(.avatar-container) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .profile-name {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  .profile-title {
+    font-size: 0.78rem;
+    padding: 3px 12px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .profile-institution {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .divider {
+    width: 100%;
+    margin-bottom: 14px;
   }
 
   .contact-info {
@@ -1134,18 +1177,17 @@ footer::before {
     width: 100%;
   }
 
+  .social-links {
+    justify-content: flex-start;
+  }
+
   .card {
-    padding: 22px 18px;
+    padding: 20px 16px;
     border-radius: 14px;
   }
 
   .section-title {
     font-size: 1.3rem;
-  }
-
-  /* Publication items */
-  .pub-item {
-    padding: 16px 14px;
   }
 
   /* Tables scroll horizontally */
@@ -1185,23 +1227,55 @@ footer::before {
     border-radius: 12px;
   }
 
+  /* Sidebar: stack fully on small phones */
   .sidebar {
-    padding: 22px 16px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 14px;
     border-radius: 14px;
+    gap: 0;
   }
 
   .avatar-container {
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
   }
 
   .profile-name {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+    text-align: center;
   }
 
   .profile-title {
-    font-size: 0.82rem;
-    padding: 4px 14px;
+    font-size: 0.75rem;
+    padding: 3px 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .profile-institution {
+    font-size: 0.78rem;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .contact-info {
+    text-align: left;
+    width: 100%;
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .card {
+    padding: 18px 14px;
+    border-radius: 12px;
   }
 
   .section-title {
@@ -1209,36 +1283,25 @@ footer::before {
     margin-bottom: 16px;
   }
 
-  /* Social links row wrap nicely */
-  .social-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-
   .social-btn {
     font-size: 0.78rem;
     padding: 7px 14px;
   }
 
-  /* Stat grid: 2 columns on small phones */
   .stats-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* Skill tags */
   .skill-tag {
     font-size: 0.75rem;
     padding: 4px 10px;
   }
 
-  /* Language pills stack */
   .languages-container {
     flex-direction: column;
     gap: 8px;
   }
 
-  /* Footer */
   footer {
     margin-bottom: 10vh !important;
     font-size: 0.78rem;
