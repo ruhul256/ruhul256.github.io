@@ -184,6 +184,10 @@
   padding: 0;
 }
 
+html {
+  font-size: 14.5px; /* Scales down all rem-based sizes slightly */
+}
+
 /* ── Global Body ── */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -878,9 +882,19 @@ p strong {
   gap: 20px;
 }
 
+/* Full-width item in 2-col grid (desktop) */
+.info-item--full {
+  grid-column: span 2;
+}
+
 @media (max-width: 768px) {
   .grid-list {
     grid-template-columns: 1fr;
+  }
+
+  /* Collapse all items to single column on mobile */
+  .info-item--full {
+    grid-column: span 1;
   }
 }
 
@@ -1043,37 +1057,191 @@ footer::before {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+
+/* ── Tablet & below (991px) ── */
 @media (max-width: 991px) {
   .portfolio-container {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .sidebar {
     position: static;
     width: 100%;
+    /* Side-by-side: avatar left, info right on tablets */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    text-align: left;
+    gap: 24px;
+    padding: 28px 24px;
+  }
+
+  .avatar-container {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+
+  .sidebar > *:not(.avatar-container) {
+    flex: 1 1 200px;
+  }
+
+  .contact-info {
+    text-align: left;
   }
 
   .card {
-    padding: 28px;
+    padding: 28px 24px;
+  }
+
+  .sidebar:hover {
+    transform: none; /* Disable lift on touch devices */
   }
 }
 
-@media (max-width: 480px) {
+/* ── Small tablets & large phones (768px) ── */
+@media (max-width: 768px) {
   body {
-    padding: 20px 12px;
-    padding-top: 80px;
+    padding: 16px 14px;
+    padding-top: 88px;
+  }
+
+  .nav-inner {
+    gap: 4px;
+    padding: 10px 14px;
+    justify-content: flex-start;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .portfolio-container {
+    gap: 18px;
+  }
+
+  .sidebar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 28px 20px;
+  }
+
+  .contact-info {
+    text-align: left;
+    width: 100%;
   }
 
   .card {
     padding: 22px 18px;
+    border-radius: 14px;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  /* Publication items */
+  .pub-item {
+    padding: 16px 14px;
+  }
+
+  /* Tables scroll horizontally */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  /* Timeline adjustments */
+  .timeline-item {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Badge wrapping */
+  .badge-group {
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Mobile phones (480px) ── */
+@media (max-width: 480px) {
+  body {
+    padding: 12px 10px;
+    padding-top: 80px;
+  }
+
+  .nav-link {
+    font-size: 0.78rem;
+    padding: 5px 10px;
+  }
+
+  .card {
+    padding: 18px 14px;
+    border-radius: 12px;
   }
 
   .sidebar {
-    padding: 28px 18px;
+    padding: 22px 16px;
+    border-radius: 14px;
+  }
+
+  .avatar-container {
+    width: 110px;
+    height: 110px;
   }
 
   .profile-name {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .profile-title {
+    font-size: 0.82rem;
+    padding: 4px 14px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+
+  /* Social links row wrap nicely */
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .social-btn {
+    font-size: 0.78rem;
+    padding: 7px 14px;
+  }
+
+  /* Stat grid: 2 columns on small phones */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Skill tags */
+  .skill-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  /* Language pills stack */
+  .languages-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Footer */
+  footer {
+    margin-bottom: 10vh !important;
+    font-size: 0.78rem;
   }
 }
 
